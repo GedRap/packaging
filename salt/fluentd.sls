@@ -1,6 +1,11 @@
+# version to download from official fluent-bit releases
 {% set MINOR_VERSION = '0.11' %}
-{% set VERSION = '0.11.12.20170707' %}
+
+# git commit hash used to download repo, takes precendence over official releases
 {% set COMMIT_HASH = 'e536db510940172e10258e6c668ee51c0e8a6d9f' %}
+
+# version to assign to build artifact
+{% set VERSION = '0.12.0.alpha' %}
 
 download_fluentbit:
   archive.extracted:
@@ -44,6 +49,7 @@ create_install_dir:
   file.directory:
     - name: /tmp/fluentbit
     - user: vagrant
+    - clean: true
 
 install_fluentbit:
   cmd.run:
